@@ -1,5 +1,5 @@
-import NotesConstants from './actions/note_actions';
-import NOTE_NAMES from './util/tones';
+import NotesConstants from '../actions/note_actions';
+import NOTE_NAMES from '../util/tones';
 
 const validKeys = ["a", "s", "d", "f", "g"];
 const keyMap = {
@@ -10,7 +10,7 @@ const keyMap = {
   'g': 'G5'
 }
 
-const notes = (state = [], action => {
+const notes = ((state = [], action) => {
   const idx = state.indexOf(action.key);
   switch(action.type) {
     case "KEY_PRESSED":
