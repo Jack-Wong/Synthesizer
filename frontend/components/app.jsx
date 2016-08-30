@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SynthContainer from './synth/synth_container';
 
 class App extends React.Component {
   render () {
     return(
-      <h1>Hello</h1>
+      <div>
+        <SynthContainer/>
+      </div>
     );
   }
 };
