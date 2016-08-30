@@ -3,7 +3,7 @@ import notes from './notes_reducer';
 
 
 const reducer = combineReducers({
-  note: notes
+  notes: notes
 });
 
 export default reducer;
