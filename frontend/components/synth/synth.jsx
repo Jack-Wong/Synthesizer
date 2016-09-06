@@ -4,7 +4,8 @@ import { NOTE_NAMES } from '../../util/tones';
 import { TONES } from '../../util/tones';
 import Note from '../../util/note';
 import $ from 'jquery';
-
+import NoteKey from './note_key';
+import { keyMap } from '../../reducers/notes_reducer';
 
 class Synth extends React.Component {
   constructor(props){
@@ -27,20 +28,34 @@ class Synth extends React.Component {
   };
 
   componentDidMount() {
-    $(document).on('keydown', event => onKeyDown(event));
-    $(document).on('keyup', event => onKeyUp(event));
+    $(document).on('keydown', event => this.onKeyDown(event));
+    $(document).on('keyup', event => this.onKeyUp(event));
+  };
+
+  playNotes() {
+    NOTE_NAMES.forEach((note, idx) => {
+      const mapNote = [];
+      this.props.notes.forEach( propNote => {
+        mapNote.push(keyMap[propNote]);
+      })
+      if(mapNote.indexOf(note) === -1) {
+        this.notes[idx].stop();
+      } else {
+        this.notes[idx].start();
+      }
+    });
   };
 
   render() {
-    console.log(this.notes);
-    const displayNotes = this.notes.map((note, index) => {
-      return <li key={index}>{note.name}</li>
+    const noteKeys = this.notes.map((note, index) => {
+      return <NoteKey key={index} note={note}/>
     });
+    this.playNotes();
 
     return(
-      <ul>
-        {displayNotes}
-      </ul>
+      <div>
+        {noteKeys}
+      </div>
     );
   }
 };

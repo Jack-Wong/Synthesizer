@@ -2,7 +2,7 @@ import NotesConstants from '../actions/note_actions';
 import NOTE_NAMES from '../util/tones';
 
 const validKeys = ["a", "s", "d", "f", "g"];
-const keyMap = {
+export const keyMap = {
   'a': 'C5',
   's': 'D5',
   'd': 'E5',
@@ -14,6 +14,7 @@ const notes = ((state = [], action) => {
   const idx = state.indexOf(action.key);
   switch(action.type) {
     case "KEY_PRESSED":
+    console.log(action);
       if(validKeys.indexOf(action.key) === -1){
         return state;
       }
