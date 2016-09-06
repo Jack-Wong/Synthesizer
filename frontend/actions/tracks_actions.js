@@ -6,7 +6,7 @@ export const TracksConstants = {
 
 export const startRecording = () => ({
   type: TracksConstants.START_RECORDING,
-  timeNow: Date.now()
+  timeStart: Date.now()
 });
 
 export const stopRecording = () => ({

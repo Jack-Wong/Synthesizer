@@ -10,11 +10,10 @@ export const keyMap = {
   'g': 'G5'
 }
 
-const notes = ((state = [], action) => {
+const notes = (state = [], action) => {
   const idx = state.indexOf(action.key);
   switch(action.type) {
     case "KEY_PRESSED":
-    console.log(action);
       if(validKeys.indexOf(action.key) === -1){
         return state;
       }
@@ -41,6 +40,6 @@ const notes = ((state = [], action) => {
     default:
       return state;
   }
-});
+};
 
 export default notes;
