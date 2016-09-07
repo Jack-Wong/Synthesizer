@@ -20,11 +20,17 @@ class Synth extends React.Component {
   onKeyDown(event) {
     var keyName = event.key;
     this.props.keyPressed(keyName);
+    if(this.props.isRecording) {
+      this.props.addNotes(this.props.notes)
+    }
   };
 
   onKeyUp(event) {
     var keyName = event.key;
     this.props.keyReleased(keyName);
+    if(this.props.isRecording) {
+      this.props.addNotes(this.props.notes)
+    }
   };
 
   componentDidMount() {
