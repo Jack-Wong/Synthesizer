@@ -6,7 +6,7 @@ import isRecording from './is_recording_reducer';
 const reducer = combineReducers({
   notes: notes,
   tracks: tracks,
-  isRecording: isRecording,
+  isRecording: isRecording
 });
 
 export default reducer;
