@@ -37,6 +37,10 @@ const notes = (state = [], action) => {
       } else {
         return state;
       }
+    case "GROUP_UPDATE":
+      return [
+        action.notes
+      ]
     default:
       return state;
   }
