@@ -10,27 +10,27 @@ const tracks = (state = {}, action) => {
       var nextState = merge({}, state);
       let newTrack = {
         id: currTrackId,
-        name: "Track" + currTrackId,
+        name: "Track " + currTrackId,
         roll: [],
-        timeStart: action.timeNow
+        timeStart: action.timeStart
       };
       nextState[currTrackId] = newTrack;
       return nextState;
     case "STOP_RECORDING":
       var nextState = merge({},state);
-      let endTrack = {
-        roll: [],
+      let endNote = {
+        notes: [],
         timeslice: action.timeNow - state[currTrackId].timeStart
       };
-      nextState[currTrackId] = endTrack;
+      nextState[currTrackId].roll.push(endNote);
       return nextState;
     case "ADD_NOTES":
       var nextState = merge({}, state);
       let addNote = {
-        roll: [action.notes],
+        notes: [action.notes],
         timeslice: action.timeNow - state[currTrackId].timeStart
       };
-      nextState[currTrackId] = addNote;
+      nextState[currTrackId].roll.push(addNote);
       return nextState;
     default:
       return state;
